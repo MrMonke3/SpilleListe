@@ -1,5 +1,20 @@
+/*
+Body styling ++
+*/
+
 :root {
-    --backgroundColor: #131212;
+    --backgroundColor: #0a080e;
+    --mainBright: #380554;
+    --mainDim: #180622;
+
+    --steamBright: #0071CB;
+    --steamDim: #0F395A ;
+
+    --xboxBright: #2CA243;
+    --xboxDim: #227B20 ;
+
+    --epicBright: #666666;
+    --epicDim: #272727 ;
 }
 
 body {
@@ -16,26 +31,152 @@ body {
     src: url(Assets/Fonts/made_tommy/MADE\ TOMMY\ Bold_PERSONAL\ USE.otf);
 }
 
+/*
+button + radiobtn styling
+*/
+
+[type=button] {
+    position: absolute;
+    opacity: 0%;
+    width: 0%;
+    height: 0%;
+    margin: 0%;
+}
+
+[type=button] + img {
+    cursor: pointer;
+}
+[type=button]:hover + img {
+    opacity: 70%;
+}
+[type=button]:checked + img {
+    outline: 2px solid white;
+}
+
+    [type=radio] {
+        position: absolute;
+        opacity: 0%;
+        width: 0%;
+        height: 0%;
+    }
+    [type=radio] + img {
+        cursor: pointer;
+    }
+    [type=radio]:hover + img {
+        opacity: 70%;
+        scale: 110%;
+    }
+    [type=radio]:checked + img {
+        outline: 2px solid white;
+    }
+
+    .hiddenbutton {
+        position: absolute;
+        opacity: 0%;
+        width: 0%;
+        height: 0%;
+    }
+
+
+/*
+Navbar
+*/
+
 .navbar {
     display: flex;
     flex-direction: row;
-    position: sticky;
+    position: fixed;
     top: 0;
 
     justify-content: space-between;
     align-items: center;
 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 70%;
+    width: max-content;
     border-radius: 0% 0% 20px 20px ;
-    border: 0%;
-    height: fit-content;
+    height: 82px;
     padding: 0% 0%;
-    margin-bottom: 10%;
-    background-color: #191616;
+
+    background-color: var(--mainDim);
 
     z-index: 9001;
 }
+
+
+   /*
+   Text add
+   */
+
+    .addtext {
+        color: rgb(255, 255, 255);
+        background-color: var(--mainDim);
+        padding: 29px;
+        border-radius: 0% 0% 0% 20px;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        margin: 0px;
+        margin-right: 0px;
+        font-size: large;
+        font-weight: bold;
+    }
+
+    input::placeholder {
+        color: #d4d4d4;
+        opacity: 100%;
+
+    }
+
+    input:focus::placeholder {
+        opacity: 60%;
+    }
+
+
+    /*
+    Game Company 
+    */
+
+    .addGameCompany {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 220px;
+        height: 82px;
+        background-color: var(--mainBright);
+        
+    }
+
+    .addGameCompany > label {
+        padding: 3px;
+    }
+
+    .gameCompanyNav {
+        filter: drop-shadow(5px 8px 5px rgb(18, 18, 18));
+        border-radius: 10%;
+    }
+
+
+    /*
+    Game State
+    */
+
+    .gamestatediv {
+        margin: 0%;
+        padding: 0% 30px;
+    }
+
+    .gamestatediv > label {
+        padding: 1px;
+    }
+    .gamestatediv > label > img {
+        border-radius: 5px;
+    }
+
+    
+    /*
+    Add game button
+    */
 
     .addbutton {
         color: rgb(255, 255, 255);
@@ -43,96 +184,32 @@ body {
         border-radius: 0% 0% 20px 0%;
         margin: 0%;
         width: 80px;
-        background-color: #442525;
-    }
-        
-    [type=button] {
-        position: absolute;
-        opacity: 0%;
-        width: 0%;
-        height: 0%;
+        box-sizing: border-box;
+        background-color: var(--mainBright);
     }
 
-    [type=button] + img {
-        cursor: pointer;
-    }
-
-    [type=button]:hover + img {
-        opacity: 70%;
-    }
-
-    [type=button]:checked + img {
-        outline: 2px solid white;
-    }
-
-        [type=radio] {
-            position: absolute;
-            opacity: 0%;
-            width: 0%;
-            height: 0%;
+        .addButtonImg {
+            width: 100%;
         }
+ 
 
-        [type=radio] + img {
-            cursor: pointer;
-        }
-
-        [type=radio]:hover + img {
-            opacity: 70%;
-            scale: 110%;
-        }
-
-        [type=radio]:checked + img {
-            outline: 2px solid white;
-        }
-    
-        .hiddenbutton {
-            position: absolute;
-            opacity: 0%;
-            width: 0%;
-            height: 0%;
-        }
-
-    .gamestatediv {
-        background-color: #442525;
-        padding: 12px 40px 12px 40px;
-        margin: 0%;
-    }
-
-    .addtext {
-        color: rgb(255, 255, 255);
-        background-color: #442525;
-        padding: 29px;
-        border-radius: 0% 0% 0% 20px;
-        justify-content: center;
-        align-items: center;
-        border: none;
-        border-bottom: 2px solid #ffffff;
-        margin: 0px;
-        padding: 29px;
-        margin-right: 20px;
-        font-size: large;
-        font-weight: bold;
-    }
-
-    .addGameCompany {
-        margin: 8px 0px;
-        background-color: #442525;
-    }
-
-    .image {
-        filter: drop-shadow(5px 8px 5px rgb(18, 18, 18));
-        border-radius: 10%;
-    }
-
-
+/*
+Gamebox Parent
+*/
 
 .centered-column {
     display: flex;
     flex-direction: column;
     align-items: center;    
-    margin-bottom: 200px;
+    margin-top: 180px;
+    margin-bottom: 20px;
+
 }
 
+
+/*
+Gamebox
+*/
 
 .GameboxTitleSlim, .GameboxTitleWide {
     display: flex;
@@ -141,10 +218,11 @@ body {
 
     height: 100px;
 
-    background-color: #442525;
+    background-color: var(--mainBright);
     border-radius: 40px 40px 00px 0px;
     align-items: center;
     color: #ffffff;
+    
 
     font-size: xx-large;
     font-weight: bolder;
@@ -152,7 +230,7 @@ body {
     filter: drop-shadow(0px 4px 4px rgb(20, 20, 20));
 }
     .GameboxTitleSlim {
-        width: 600px;
+        width: 500px;
     }
     .GameboxTitleWide {
         width: 850px;
@@ -164,18 +242,19 @@ body {
     justify-content: center;
     align-items: center;
 
-    background-color: #191616;
+    background-color: var(--mainDim);
     box-shadow: 5px 10px 4px rgba(0, 0, 0, 0.1);
     border-radius: 0px 0px 40px 40px;
     
     padding: 0px;
-    padding-top: 80px;
-    padding-bottom: 100px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     min-height: 200px;
+    margin-bottom: 40px;
 
 }
     .gameboxcontentSlim {
-        width: 600px;
+        width: 500px;
     }
     .gameboxcontentWide {
         width: 850px;
@@ -192,6 +271,7 @@ body {
 
     }
 
+
     /*
     GameSlotBase
     */
@@ -205,7 +285,7 @@ body {
         
         max-height: 80px;
         height: 80px;
-        width: 360px;
+        width: max-content;
         max-width: 360px;
         border-radius: 20px;
         margin: 10px;
@@ -216,13 +296,13 @@ body {
       name farge styres under name
     */
     .steamGameSlot {
-        background-color: #0071CB;
+        background-color: var(--steamBright);
     }
     .xboxGameSlot {
-        background-color: #2CA243;
+        background-color: var(--xboxBright);
     }
     .epicGameSlot {
-        background-color: #454545;
+        background-color: var(--epicBright);
     }
   
 
@@ -262,17 +342,16 @@ body {
         justify-content: center;
         align-items: center;
         word-break: break-word;
-        background-color: #000000;
     }
 
     .steamGameSlot > .gameName {
-        background-color: #103A5B;
+        background-color: var(--steamDim);
     }
     .xboxGameSlot > .gameName {
-        background-color: #227B20;
+        background-color: var(--xboxDim);
     } 
     .epicGameSlot > .gameName {
-        background-color: #272727;
+        background-color: var(--epicDim);
     }
 
 
@@ -299,14 +378,14 @@ body {
         align-items: center;
         justify-content: center;
     }
-    .xboxGameSlot > div > label {
-        background-color: #227B20;
-    }
     .steamGameSlot > div > label {
-        background-color: #103A5B;
+        background-color: var(--steamDim);
+    }
+    .xboxGameSlot > div > label {
+        background-color: var(--xboxDim);
     }
     .epicGameSlot > div > label {
-        background-color: #272727;
+        background-color: var(--epicDim);
     }
 
     .xboxGameSlot > div > label + img, 
@@ -315,9 +394,9 @@ body {
         cursor: pointer;
     }
 
-    .xboxGameSlot > div > label + img:hover + img ,
-    .steamGameSlot > div > label + img:hover + img ,
-    .epicGameSlot > div > label + img:hover + img {
+    .xboxGameSlot > div > label + img:hover,
+    .steamGameSlot > div > label + img:hover,
+    .epicGameSlot > div > label + img:hover {
         opacity: 70%;
         scale: 110%;
     }

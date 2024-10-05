@@ -36,13 +36,13 @@ function addgametoUI(gameData) {
 // base Slot
     var gameSlot = document.createElement('div');
         if (gameData.gameCompany == 'steam') {
-            gameSlot.className = 'steamGameSlot'
+            gameSlot.className = 'steamGameSlot GameJS'
         }
         else if (gameData.gameCompany == 'xbox') {
-        gameSlot.className = 'xboxGameSlot'
+        gameSlot.className = 'xboxGameSlot GameJS'
         }
         else if (gameData.gameCompany == 'epic') {
-        gameSlot.className = 'epicGameSlot'
+        gameSlot.className = 'epicGameSlot GameJS'
         } else {
         alert('company not recognised on start')
         return;
@@ -57,7 +57,6 @@ function addgametoUI(gameData) {
                     gameSlotCompanyImg.className = 'gameSlotCompanyImg'
 
                     // flytt til under var etter jeg har lagd img til alle slotsa
-                    gameSlotCompany.appendChild(gameSlotCompanyImg);
                 }
 
                 else if (gameData.gameCompany == 'xbox') {
@@ -66,14 +65,18 @@ function addgametoUI(gameData) {
                         gameSlotCompanyImg.src = 'Assets/xboxlogoRaw.png'
                         gameSlotCompanyImg.className = 'gameSlotCompanyImg'
 
-                        gameSlotCompany.appendChild(gameSlotCompanyImg);
-
                 }
 
                 else if (gameData.gameCompany == 'epic') {
                 gameSlotCompany.className = 'epicGameSlotCompany'
+                    var gameSlotCompanyImg = document.createElement('img')
+                        gameSlotCompanyImg.src = 'Assets/EpicgamesRaw.jpg'
+                        gameSlotCompanyImg.className = 'gameSlotCompanyImg'
 
                 } 
+            
+            gameSlotCompany.appendChild(gameSlotCompanyImg);
+
             
            
 
@@ -94,24 +97,18 @@ function addgametoUI(gameData) {
             var gameSlotStateLabelImg = document.createElement('img')
                 if (gameData.gameState == 'playing') {
                     gameSlotStateLabelImg.src = 'Assets/PlayingIconTransparent.png';
-                    gameSlotStateLabelImg.addEventListener('click', () => changeGameState(gameData));
-
                 }
                 else if (gameData.gameState == 'notplaying') {
                     gameSlotStateLabelImg.src = 'Assets/NotPlayingIconTransparent.png';
-                    gameSlotStateLabelImg.addEventListener('click', () => changeGameState(gameData));
-
                 }
                 else if (gameData.gameState == 'finishedplaying') {
                     gameSlotStateLabelImg.src = 'Assets/FinishedPlayingIconTransparent.png';
-                    gameSlotStateLabelImg.addEventListener('click', () => changeGameState(gameData));
-
                 } else {
                     alert('gamestatenotfound');
                     return;
                 }
 
-
+                gameSlotStateLabelImg.addEventListener('click', () => changeGameState(gameData));
                 gameSlotStateLabelImg.style.width = '50px';
                 
                 var gameSlotStateLabelBtn = document.createElement('button');
@@ -148,6 +145,21 @@ function addgametoUI(gameData) {
         }
 
 
+}
+
+function saveRowData() {
+    var games = [];
+    var gamesContainer = document.getElementById('gameContainerJS');
+    var gamesContainerElements = gamesContainer.querySelectorAll('.GameJS');
+
+    gamesContainerElements.forEach(function(gameElement) {
+        var gameData = {
+            gameCompany: gameElement.children[0].textContent,
+            gameName: gameElement.children[1].textContent,
+            gameState: gameElement.children[2].textContent
+        };
+        games.push(gameData);
+    });
 }
 
 function changeGameState(gameData) {
