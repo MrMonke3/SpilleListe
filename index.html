@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="stylescrip.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persistent Rows with Drag-and-Drop</title>
+</head>
+<body>
+    <div class="centered-column">
+     <!-- Form to add new rows -->
+        <div class="input-row">
+            <input type="text" id="nameInput" placeholder="Enter name" style="padding: 8px; width: 20%;">
+
+            <!-- Status options (visible radio buttons) -->
+            <div style="display: inline-block; padding-left: 10px;">
+                <label>Status:</label>
+                <label><input type="radio" name="status" value="Playing" checked> Playing</label>
+                <label><input type="radio" name="status" value="Not Playing"> Not Playing</label>
+            </div>
+
+            <!-- Color options (visible radio buttons) -->
+            <div style="display: inline-block; padding-left: 10px;">
+                <label>Color:</label>
+                <label><input type="radio" name="color" value="Blue" checked> Blue</label>
+                <label><input type="radio" name="color" value="Green"> Green</label>
+                <label><input type="radio" name="color" value="Grey"> Grey</label>
+            </div>
+
+            <button onclick="addRow()" style="padding: 8px 12px; margin-left: 10px;">Add Row</button>
+    </div>
+
+    <div class="centered-column">
+   
+        </div>
+
+        <!-- This is where new rows will be added -->
+        <div id="rowsContainer"></div>
+    </div>
+
+    <script src="script.js"> </script>
+</body>
+</html>
+
