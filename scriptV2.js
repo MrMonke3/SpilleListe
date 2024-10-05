@@ -1,3 +1,8 @@
+window.onload = function() {
+    loadGames()
+    
+}
+
 document.getElementById('nameInput').addEventListener('keydown', function(event) {
 if (event.key === 'Enter') {
     addGameData()
@@ -19,13 +24,15 @@ function addGameData() {
         };
 
     addgametoUI(gameData);
-    
+
+    saveGameData(gameData);
+
     // resetter values
 
     document.getElementById('nameInput').value = '';
 
     } else {
-        alert('skrive navn idiot');
+        alert('skriv navn idiot');
     }
 
 
@@ -144,21 +151,26 @@ function addgametoUI(gameData) {
             alert('gamestatenotfound on final export')
         }
 
-
 }
 
-function saveRowData() {
-    var games = [];
-    var gamesContainer = document.getElementById('gameContainerJS');
-    var gamesContainerElements = gamesContainer.querySelectorAll('.GameJS');
 
-    gamesContainerElements.forEach(function(gameElement) {
-        var gameData = {
-            gameCompany: gameElement.children[0].textContent,
-            gameName: gameElement.children[1].textContent,
-            gameState: gameElement.children[2].textContent
-        };
-        games.push(gameData);
+
+function saveGameData(gameData) {
+    var games = [];
+
+    // loader data 
+    games = JSON.parse(localStorage.getItem('games')) || [];
+
+    games.push(gameData);
+
+    localStorage.setItem('games', JSON.stringify(games));
+}
+
+function loadGames() {
+    var games = JSON.parse(localStorage.getItem('games')) || [];
+
+    games.forEach(function(gameData) {
+        addgametoUI(gameData);
     });
 }
 
