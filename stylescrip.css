@@ -1,10 +1,14 @@
+:root {
+    --backgroundColor: #131212;
+}
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #131212;
+    background-color: var(--backgroundColor);
     font-family: Main;
 }
 @font-face {
@@ -22,11 +26,11 @@ body {
     align-items: center;
 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 60em;
+    width: 70%;
     border-radius: 0% 0% 20px 20px ;
     border: 0%;
-    height: 80px;
-    padding: 0%;
+    height: fit-content;
+    padding: 0% 0%;
     margin-bottom: 10%;
     background-color: #191616;
 
@@ -35,9 +39,11 @@ body {
 
     .addbutton {
         color: rgb(255, 255, 255);
-        padding: 0px;
+        padding: 0px 0px;
         border-radius: 0% 0% 20px 0%;
         margin: 0%;
+        width: 80px;
+        background-color: #442525;
     }
         
     [type=button] {
@@ -103,8 +109,14 @@ body {
         border-bottom: 2px solid #ffffff;
         margin: 0px;
         padding: 29px;
+        margin-right: 20px;
         font-size: large;
         font-weight: bold;
+    }
+
+    .addGameCompany {
+        margin: 8px 0px;
+        background-color: #442525;
     }
 
     .image {
@@ -244,12 +256,12 @@ body {
         color: #ffffff;
         font-weight: bold;
         width: 200px;
-        padding: 0px 20px;
+        padding: 0px 10px;
         height: 80px;
         text-align: center;
         justify-content: center;
         align-items: center;
-        word-break: break-all;
+        word-break: break-word;
         background-color: #000000;
     }
 
@@ -279,8 +291,10 @@ body {
         border-radius: 0px 20px 20px 0px;
     }
  
-    .xboxGameSlot, .steamGameSlot, .epicGameSlot > div > label {
-        border-radius: 20px;
+    .xboxGameSlot > div > label,
+    .steamGameSlot > div > label,
+    .epicGameSlot > div > label {
+        border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -293,6 +307,19 @@ body {
     }
     .epicGameSlot > div > label {
         background-color: #272727;
+    }
+
+    .xboxGameSlot > div > label + img, 
+    .steamGameSlot > div > label + img,
+    .epicGameSlot > div > label + img {
+        cursor: pointer;
+    }
+
+    .xboxGameSlot > div > label + img:hover + img ,
+    .steamGameSlot > div > label + img:hover + img ,
+    .epicGameSlot > div > label + img:hover + img {
+        opacity: 70%;
+        scale: 110%;
     }
 
 
