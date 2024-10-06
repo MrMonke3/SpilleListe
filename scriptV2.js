@@ -158,7 +158,7 @@ function addgametoUI(gameData) {
 function saveGameData(gameData) {
     var games = [];
 
-    // loader data 
+    // loader data, kommenter ut for å slette alle spill 
     games = JSON.parse(localStorage.getItem('games')) || [];
 
     games.push(gameData);
@@ -167,8 +167,11 @@ function saveGameData(gameData) {
 }
 
 function loadGames() {
+    
+    // loader gamedata fra localstorage
     var games = JSON.parse(localStorage.getItem('games')) || [];
 
+    // adder hvert game
     games.forEach(function(gameData) {
         addgametoUI(gameData);
     });

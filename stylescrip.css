@@ -4,7 +4,7 @@ Body styling ++
 
 :root {
     --backgroundColor: #0a080e;
-    --mainBright: #380554;
+    --mainBright: #4d0872;
     --mainDim: #180622;
 
     --steamBright: #0071CB;
@@ -162,15 +162,29 @@ Navbar
     */
 
     .gamestatediv {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        justify-content: center;
         margin: 0%;
         padding: 0% 30px;
     }
 
-    .gamestatediv > label {
-        padding: 1px;
-    }
-    .gamestatediv > label > img {
+   
+    .gamestateLabel > img {
         border-radius: 5px;
+    }
+
+    .gamestateLabel {
+        width: 55px;
+        height: 55px;
+        background-color: var(--mainBright);
+        border-radius: 10px;
+        margin: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     
@@ -334,7 +348,8 @@ Gamebox
         display: flex;
         font-size: x-large;
         color: #ffffff;
-        font-weight: bold;
+        font-weight: 100;
+        font-family: Main;
         width: 200px;
         padding: 0px 10px;
         height: 80px;
