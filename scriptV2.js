@@ -3,11 +3,13 @@ window.onload = function() {
     
 }
 
+
 document.getElementById('nameInput').addEventListener('keydown', function(event) {
 if (event.key === 'Enter') {
     addGameData()
 }   
 })
+
 
 function addGameData() {
 
@@ -118,9 +120,10 @@ function addgametoUI(gameData) {
                 gameSlotStateLabelImg.addEventListener('click', () => changeGameState(gameData));
                 gameSlotStateLabelImg.style.width = '50px';
                 
-                var gameSlotStateLabelBtn = document.createElement('button');
+                var gameSlotStateLabelBtn = document.createElement('input');
+                gameSlotStateLabelBtn.type = 'button'
                 gameSlotStateLabelBtn.className = 'hiddenbutton'
-
+                gameSlotStateLabelBtn.style.border = '0%'
                 //gameSlotStateLabelBtn.className = 'gameSlotStateLabelBtn'
                 
 

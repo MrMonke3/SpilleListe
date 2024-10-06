@@ -40,7 +40,7 @@ button + radiobtn styling
     opacity: 0%;
     width: 0%;
     height: 0%;
-    margin: 0%;
+    border: 0;
 }
 
 [type=button] + img {
@@ -48,6 +48,7 @@ button + radiobtn styling
 }
 [type=button]:hover + img {
     opacity: 70%;
+
 }
 [type=button]:checked + img {
     outline: 2px solid white;
@@ -75,6 +76,8 @@ button + radiobtn styling
         opacity: 0%;
         width: 0%;
         height: 0%;
+        padding: 0%;
+        border: 0%;
     }
 
 
@@ -409,11 +412,13 @@ Gamebox
         cursor: pointer;
     }
 
-    .xboxGameSlot > div > label + img:hover,
-    .steamGameSlot > div > label + img:hover,
-    .epicGameSlot > div > label + img:hover {
-        opacity: 70%;
+    .xboxGameSlot > div > label:hover,
+    .steamGameSlot > div > label:hover,
+    .epicGameSlot > div > label:hover {
+        outline: solid 2px #ffffff;
         scale: 110%;
+        cursor: pointer;
+
     }
 
 
