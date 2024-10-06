@@ -190,7 +190,6 @@ Navbar
         justify-content: center;
     }
 
-    
     /*
     Add game button
     */
@@ -381,47 +380,99 @@ Gamebox
         display: flex;
         align-items: center;
         justify-content: center;
-
+        flex-direction: row-reverse;
         min-width: 80px;
         width: 80px;
         height: 80px;
         border-radius: 0px 20px 20px 0px;
+        z-index: 15;
+        position: relative; /* Necessary to align the dropdown inside */
     }
  
-    .xboxGameSlot > div > label,
-    .steamGameSlot > div > label,
-    .epicGameSlot > div > label {
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .steamGameSlot > div > label {
-        background-color: var(--steamDim);
-    }
-    .xboxGameSlot > div > label {
-        background-color: var(--xboxDim);
-    }
-    .epicGameSlot > div > label {
-        background-color: var(--epicDim);
-    }
-
-    .xboxGameSlot > div > label + img, 
-    .steamGameSlot > div > label + img,
-    .epicGameSlot > div > label + img {
-        cursor: pointer;
-    }
-
-    .xboxGameSlot > div > label:hover,
-    .steamGameSlot > div > label:hover,
-    .epicGameSlot > div > label:hover {
-        outline: solid 2px #ffffff;
-        scale: 110%;
-        cursor: pointer;
-
-    }
+        /*
+        styling for state bilde
+        */
+        .xboxGameSlot > div > label,
+        .steamGameSlot > div > label,
+        .epicGameSlot > div > label {
+            position: relative;
+            z-index: 10; /* Ensure the first label stays on top */
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .steamGameSlot > div > label {
+            background-color: var(--steamDim);
+        }
+        .xboxGameSlot > div > label {
+            background-color: var(--xboxDim);
+        }
+        .epicGameSlot > div > label {
+            background-color: var(--epicDim);
+        }
 
 
+        /*
+        styling for button hover
+        */
+            .xboxGameSlot > div > label + img, 
+            .steamGameSlot > div > label + img,
+            .epicGameSlot > div > label + img {
+                cursor: pointer;
+            }
+
+            .xboxGameSlot > div > label:hover,
+            .steamGameSlot > div > label:hover,
+            .epicGameSlot > div > label:hover {
+                outline: solid 2px #ffffff;
+                scale: 110%;
+                cursor: pointer;
+
+            }
+
+            /*
+            drop down menu styling
+            */
+            .gameStateListDiv {
+                position: absolute;
+                top: 0; /* Adjust the vertical positioning as necessary */
+              
+                z-index: 1; /* Dropdown menu appears behind the first label */
+                display: none; /* Hide initially */
+                right: 80px;
+                width: 200px;
+                height: 80px;
+                background-color: var(--xboxDim);
+            }
+
+                .gameStateList {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    height: 80px;
+                    margin: 0px;
+                    padding: 0px;
+                    list-style: none;
+                }
+
+                .gameStateList > li {
+                    margin: 0 6px;
+                    background-color: var(--xboxBright);
+                    border-radius: 10px;
+                }
+
+                .gameSlotState:hover .gameStateListDiv {
+                    display: block;
+                }
+
+                .gameStateList > li > label > img:hover {
+                    outline: solid 2px #ffffff;
+                    scale: 110%;
+                    cursor: pointer;
+                }
+                
 
 
 
