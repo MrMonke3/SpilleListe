@@ -10,11 +10,17 @@ if (event.key === 'Enter') {
 }   
 })
 
-function openGameStateMenu() {
-    document.getElementById('gameStateList').classList.toggle('active')
-    
-    document.getElementById('gameStateListDiv').classList.toggle('active')
-    
+function openGameStateMenu(buttonElement) {
+    let parentElement = buttonElement.parentElement.parentElement;
+
+    let gameStateListDiv = parentElement.querySelector('.gameStateListDiv');
+    if (gameStateListDiv) {
+        gameStateListDiv.classList.toggle('active');
+    }
+    let gameStateList = gameStateListDiv.querySelector('.gameStateList');
+    if (gameStateList) {
+        gameStateList.classList.toggle('active');
+    }  
 }
 
 
