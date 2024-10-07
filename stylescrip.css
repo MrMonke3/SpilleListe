@@ -489,12 +489,15 @@ Gamebox
                     margin: 0 6px;
                     background-color: var(--xboxBright);
                     border-radius: 10px;
+                    width: max-content;
+                    height: max-content;
                 }
 
                 .gameStateList > li > label > img:hover {
                     outline: solid 2px #ffffff;
                     scale: 110%;
                     cursor: pointer;
+                    border-radius: 10px;
                 }
                 
 
