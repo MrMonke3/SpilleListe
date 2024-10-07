@@ -82,10 +82,12 @@
                     <div class="gameSlotState">
                         <label>
                             <img src="Assets/PlayingIconTransparent.png" style="width: 50px;">
-                            <input class="hiddenbutton" type="button" onclick="changeGameState()">
+                            <input class="hiddenbutton" type="button" onclick="openGameStateMenu()">
                         </label>
-                        <div class="gameStateListDiv">
-                            <ul class="gameStateList">
+                        <div class="gameStateListDiv" id="gameStateListDiv">
+                            
+                            <ul class="gameStateList" id="gameStateList">
+
                                 <li>
                                     <label>
                                         <img src="Assets/PlayingIconTransparent.png" style="width: 50px;">
@@ -104,7 +106,9 @@
                                         <input class="hiddenbutton" type="button" onclick="changeGameState()">
                                     </label>
                                 </li>
+
                             </ul>
+
                         </div>
                     </div>
                 </div>

@@ -441,10 +441,18 @@ Gamebox
                 z-index: 1; /* Dropdown menu appears behind the first label */
                 display: none; /* Hide initially */
                 right: 80px;
-                width: 200px;
+                width: 0px;
                 height: 80px;
                 background-color: var(--xboxDim);
             }
+
+            .gameStateListDiv.active {
+                width: 200px;
+                display: block;
+            }
+
+
+            
 
                 .gameStateList {
                     display: flex;
@@ -461,10 +469,6 @@ Gamebox
                     margin: 0 6px;
                     background-color: var(--xboxBright);
                     border-radius: 10px;
-                }
-
-                .gameSlotState:hover .gameStateListDiv {
-                    display: block;
                 }
 
                 .gameStateList > li > label > img:hover {

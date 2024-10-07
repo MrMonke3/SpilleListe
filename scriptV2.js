@@ -10,6 +10,13 @@ if (event.key === 'Enter') {
 }   
 })
 
+function openGameStateMenu() {
+    document.getElementById('gameStateList').classList.toggle('active')
+    
+    document.getElementById('gameStateListDiv').classList.toggle('active')
+    
+}
+
 
 function addGameData() {
 
@@ -45,13 +52,13 @@ function addgametoUI(gameData) {
 // base Slot
     var gameSlot = document.createElement('div');
         if (gameData.gameCompany == 'steam') {
-            gameSlot.className = 'steamGameSlot GameJS'
+            gameSlot.className = 'steamGameSlot'
         }
         else if (gameData.gameCompany == 'xbox') {
-        gameSlot.className = 'xboxGameSlot GameJS'
+        gameSlot.className = 'xboxGameSlot'
         }
         else if (gameData.gameCompany == 'epic') {
-        gameSlot.className = 'epicGameSlot GameJS'
+        gameSlot.className = 'epicGameSlot'
         } else {
         alert('company not recognised on start')
         return;
