@@ -455,6 +455,15 @@ Gamebox
                 transition-delay: 0s;
 
             }
+            .xboxGameSlot > div > .gameStateListDiv {
+                background-color: var(--xboxDim);
+            }
+            .steamGameSlot > div > .gameStateListDiv {
+                background-color: var(--steamDim);
+            }
+            .epicGameSlot > div > .gameStateListDiv {
+                background-color: var(--epicDim);
+            }
 
             .gameStateList {
                 display: flex;
@@ -486,18 +495,46 @@ Gamebox
             }
 
                 .gameStateList > li {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     margin: 0 6px;
-                    background-color: var(--xboxBright);
                     border-radius: 10px;
                     width: max-content;
                     height: max-content;
                 }
+                .gameStateList > li > label > input {
+                    display: none;
+                }
+
+                .gameStateList > li > label > img {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                   
+                }
+
+                .xboxGameSlot > div > div > ul > li {
+                    background-color: var(--xboxBright);
+                }
+
+                .steamGameSlot > div > div > ul > li {
+                    background-color: var(--steamBright);
+                }
+                .epicGameSlot > div > div > ul > li {
+                    background-color: var(--epicBright);
+                }
+
+               
+
+
+
 
                 .gameStateList > li > label > img:hover {
-                    outline: solid 2px #ffffff;
+                    border: solid 2px #ffffff;
                     scale: 110%;
                     cursor: pointer;
-                    border-radius: 10px;
+                    border-radius: 15px;
                 }
                 
 

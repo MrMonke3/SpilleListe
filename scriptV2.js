@@ -129,22 +129,142 @@ function addgametoUI(gameData) {
                     alert('gamestatenotfound');
                     return;
                 }
-
-                gameSlotStateLabelImg.addEventListener('click', () => changeGameState(gameData));
-                gameSlotStateLabelImg.style.width = '50px';
                 
                 var gameSlotStateLabelBtn = document.createElement('input');
                 gameSlotStateLabelBtn.type = 'button'
                 gameSlotStateLabelBtn.className = 'hiddenbutton'
                 gameSlotStateLabelBtn.style.border = '0%'
-                //gameSlotStateLabelBtn.className = 'gameSlotStateLabelBtn'
+                gameSlotStateLabelBtn.addEventListener('click', function() {
+                    openGameStateMenu(this);
+                }) 
                 
+
+                gameSlotStateLabelImg.style.width = '50px';
+
+
+
+                    //gameStateList
+                    let gameSlotStateListDiv = document.createElement('div');
+                    gameSlotStateListDiv.className = 'gameStateListDiv';
+                    gameSlotStateListDiv.id = 'gameStateListDiv';
+                    
+                    let gameSlotStateList = document.createElement('ul');
+                    gameSlotStateList.className = 'gameStateList';
+                    gameSlotStateList.id = 'gameStateList';
+
+
+                    //playing btn
+                    let gameSlotStateListLiPlaying = document.createElement('li');
+               
+                        let gameSlotStateListLabelPlaying = document.createElement('label');
+                    
+                            let gameSlotStateListBtnPlaying = document.createElement('input');
+                            gameSlotStateListBtnPlaying.type = 'button';
+                            gameSlotStateListBtnPlaying.className = 'hiddenbutton';
+                            gameSlotStateListBtnPlaying.addEventListener('click', () => changeGameState(gameData));
+
+                            let gameSlotStateListImgPlaying = document.createElement('img');
+                            gameSlotStateListImgPlaying.src = ('Assets/PlayingIconTransparent.png');
+                            gameSlotStateListImgPlaying.width = '50'
+
+                            
+                    gameSlotStateListLabelPlaying.appendChild(gameSlotStateListBtnPlaying);
+                    gameSlotStateListLabelPlaying.appendChild(gameSlotStateListImgPlaying);
+                
+                    gameSlotStateListLiPlaying.appendChild(gameSlotStateListImgPlaying);
+
+
+                    // not playing btn
+                    let gameSlotStateListLiNotPlaying = document.createElement('li');
+
+                        let gameSlotStateListLabelNotPlaying = document.createElement('label');
+
+                            let gameSlotStateListBtnNotPlaying = document.createElement('input');
+                            gameSlotStateListBtnNotPlaying.type = 'button';
+                            gameSlotStateListBtnNotPlaying.className = 'hiddenbutton';
+                            gameSlotStateListBtnNotPlaying.addEventListener('click', () => changeGameState(gameData));
+
+                            let gameSlotStateListImgNotPlaying = document.createElement('img');
+                            gameSlotStateListImgNotPlaying.src = ('Assets/NotPlayingIconTransparent.png');
+                            gameSlotStateListImgNotPlaying.width = '50'
+
+
+                    gameSlotStateListLabelNotPlaying.appendChild(gameSlotStateListBtnNotPlaying);
+                    gameSlotStateListLabelNotPlaying.appendChild(gameSlotStateListImgNotPlaying);
+                
+                    gameSlotStateListLiNotPlaying.appendChild(gameSlotStateListLabelNotPlaying);
+
+
+                    // finished playing btn
+                    let gameSlotStateListLiFinishedPlaying = document.createElement('li');
+
+                            let gameSlotStateListLabelFinishedPlaying = document.createElement('label');
+
+                                let gameSlotStateListBtnNotFinishedPlaying = document.createElement('input');
+                                gameSlotStateListBtnNotFinishedPlaying.type = 'button';
+                                gameSlotStateListBtnNotFinishedPlaying.className = 'hiddenbutton';
+                                gameSlotStateListBtnNotFinishedPlaying.addEventListener('click', () => changeGameState(gameData));
+
+                                let gameSlotStateListImgFinishedPlaying = document.createElement('img');
+                                gameSlotStateListImgFinishedPlaying.src = ('Assets/FinishedPlayingIconTransparent.png');
+                                gameSlotStateListImgFinishedPlaying.width = '50'
+
+                                
+                  
+                    gameSlotStateListLabelFinishedPlaying.appendChild(gameSlotStateListBtnNotFinishedPlaying);
+                    gameSlotStateListLabelFinishedPlaying.appendChild(gameSlotStateListImgFinishedPlaying);
+            
+                    gameSlotStateListLiFinishedPlaying.appendChild(gameSlotStateListLabelFinishedPlaying);
+
+
+                    // Delete btn
+                    let gameSlotStateListLiDelete = document.createElement('li');
+
+                        let gameSlotStateListLabelDelete = document.createElement('label');
+
+                            let gameSlotStateListBtnDelete = document.createElement('input');
+                            gameSlotStateListBtnDelete.type = 'button';
+                            gameSlotStateListBtnDelete.className = 'hiddenbutton';
+                            gameSlotStateListBtnDelete.addEventListener('click', () => changeGameState(gameData));
+
+                            let gameSlotStateListImgDelete = document.createElement('img');
+                            gameSlotStateListImgDelete.src = ('Assets/AddButtonTransparent.png');
+                            gameSlotStateListImgDelete.width = '50'
+
+
+                    gameSlotStateListLabelDelete.appendChild(gameSlotStateListBtnDelete);
+                    gameSlotStateListLabelDelete.appendChild(gameSlotStateListImgDelete);
+
+                    gameSlotStateListLiDelete.appendChild(gameSlotStateListLabelDelete);
+                    
+                    
+            //appending ul to state
+            if (gameData.gameState === 'playing') {
+                gameSlotStateList.appendChild(gameSlotStateListLiDelete);
+                gameSlotStateList.appendChild(gameSlotStateListLiNotPlaying);
+                gameSlotStateList.appendChild(gameSlotStateListLiFinishedPlaying);
+            } else if (gameData.gameState === 'notplaying') {
+                gameSlotStateList.appendChild(gameSlotStateListLiDelete);
+                gameSlotStateList.appendChild(gameSlotStateListLiFinishedPlaying);
+                gameSlotStateList.appendChild(gameSlotStateListLiPlaying);
+            }
+            else if (gameData.gameState === 'finishedplaying') {
+                gameSlotStateList.appendChild(gameSlotStateListLiDelete);
+                gameSlotStateList.appendChild(gameSlotStateListLiPlaying);
+                gameSlotStateList.appendChild(gameSlotStateListLiNotPlaying);
+            } else {
+                alert('couldnt find gameState for GameStateList')
+            }
+            ;
+
+            gameSlotStateListDiv.appendChild(gameSlotStateList);
 
         // putter alle slots sammen
             gameSlotStateLabel.appendChild(gameSlotStateLabelImg);
             gameSlotStateLabel.appendChild(gameSlotStateLabelBtn);
 
             gameSlotState.appendChild(gameSlotStateLabel);
+            gameSlotState.appendChild(gameSlotStateListDiv);
 
 
             gameSlot.appendChild(gameSlotCompany)
@@ -196,3 +316,4 @@ function loadGames() {
 function changeGameState(gameData) {
     alert('gamestate wants to change')
 }
+
