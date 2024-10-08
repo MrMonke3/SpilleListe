@@ -444,8 +444,8 @@ Gamebox
                 width: 0px;
                 height: 80px;
                 background-color: var(--xboxDim);
-                transition: width 0.5s;
-                transition-delay: 0.5s;
+                transition: width 0.3s;
+                transition-delay: 0.3s;
             }
 
 
@@ -475,7 +475,7 @@ Gamebox
                 padding: 0px;
                 list-style: none;
                 opacity: 0%;
-                transition: opacity 0.5s, scale 0.4s;
+                transition: opacity 0.3s, scale 0.3s;
                 transition-delay: 0s;
                 scale: 0%;
             }
@@ -483,37 +483,25 @@ Gamebox
             .gameStateList.active {
                 display: flex;
                 flex-direction: row;
-                justify-content: center;
+                justify-content: space-evenly;
                 align-items: center;
                 height: 80px;
                 margin: 0px;
                 padding: 0px;
                 list-style: none;
                 opacity: 100%;
-                transition-delay: 0.5s;
+                transition-delay: 0.3s;
                 scale: 100%;
             }
 
                 .gameStateList > li {
                     display: flex;
-                    justify-content: center;
                     align-items: center;
-                    margin: 0 6px;
+                    margin: 0px;
                     border-radius: 10px;
                     width: max-content;
                     height: max-content;
                 }
-                .gameStateList > li > label > input {
-                    display: none;
-                }
-
-                .gameStateList > li > label > img {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                   
-                }
-
                 .xboxGameSlot > div > div > ul > li {
                     background-color: var(--xboxBright);
                 }
@@ -524,18 +512,30 @@ Gamebox
                 .epicGameSlot > div > div > ul > li {
                     background-color: var(--epicBright);
                 }
+                .gameStateList > li > label  {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 1px;
+                }
+
+
+                .gameStateList > li > label > img {
+                    width: 50px;
+                    height: auto;
+                    transition: scale 0.2s ease, outlinge 0.2s ease;
+                }
+
+                .gameStateList > li > label > img:hover {
+                    outline: solid 2px #ffffff;
+                    scale: 1.1;
+                    cursor: pointer;
+                    border-radius: 10px;
+                }
 
                
 
-
-
-
-                .gameStateList > li > label > img:hover {
-                    border: solid 2px #ffffff;
-                    scale: 110%;
-                    cursor: pointer;
-                    border-radius: 15px;
-                }
+               
                 
 
 

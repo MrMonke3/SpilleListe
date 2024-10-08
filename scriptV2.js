@@ -3,25 +3,23 @@ window.onload = function() {
     
 }
 
+function loadGames() {
+    
+    // loader gamedata fra localstorage
+    var games = JSON.parse(localStorage.getItem('games')) || [];
+
+    // adder hvert game
+    games.forEach(function(gameData) {
+        addgametoUI(gameData);
+    });
+}
+
 
 document.getElementById('nameInput').addEventListener('keydown', function(event) {
 if (event.key === 'Enter') {
     addGameData()
 }   
 })
-
-function openGameStateMenu(buttonElement) {
-    let parentElement = buttonElement.parentElement.parentElement;
-
-    let gameStateListDiv = parentElement.querySelector('.gameStateListDiv');
-    if (gameStateListDiv) {
-        gameStateListDiv.classList.toggle('active');
-    }
-    let gameStateList = gameStateListDiv.querySelector('.gameStateList');
-    if (gameStateList) {
-        gameStateList.classList.toggle('active');
-    }  
-}
 
 
 function addGameData() {
@@ -161,7 +159,7 @@ function addgametoUI(gameData) {
                             let gameSlotStateListBtnPlaying = document.createElement('input');
                             gameSlotStateListBtnPlaying.type = 'button';
                             gameSlotStateListBtnPlaying.className = 'hiddenbutton';
-                            gameSlotStateListBtnPlaying.addEventListener('click', () => changeGameState(gameData));
+                            gameSlotStateListBtnPlaying.addEventListener('click', () => moveGameToPlaying(gameData));
 
                             let gameSlotStateListImgPlaying = document.createElement('img');
                             gameSlotStateListImgPlaying.src = ('Assets/PlayingIconTransparent.png');
@@ -171,7 +169,7 @@ function addgametoUI(gameData) {
                     gameSlotStateListLabelPlaying.appendChild(gameSlotStateListBtnPlaying);
                     gameSlotStateListLabelPlaying.appendChild(gameSlotStateListImgPlaying);
                 
-                    gameSlotStateListLiPlaying.appendChild(gameSlotStateListImgPlaying);
+                    gameSlotStateListLiPlaying.appendChild(gameSlotStateListLabelPlaying);
 
 
                     // not playing btn
@@ -182,7 +180,7 @@ function addgametoUI(gameData) {
                             let gameSlotStateListBtnNotPlaying = document.createElement('input');
                             gameSlotStateListBtnNotPlaying.type = 'button';
                             gameSlotStateListBtnNotPlaying.className = 'hiddenbutton';
-                            gameSlotStateListBtnNotPlaying.addEventListener('click', () => changeGameState(gameData));
+                            gameSlotStateListBtnNotPlaying.addEventListener('click', () => moveGameToNotPlaying(gameData));
 
                             let gameSlotStateListImgNotPlaying = document.createElement('img');
                             gameSlotStateListImgNotPlaying.src = ('Assets/NotPlayingIconTransparent.png');
@@ -203,7 +201,7 @@ function addgametoUI(gameData) {
                                 let gameSlotStateListBtnNotFinishedPlaying = document.createElement('input');
                                 gameSlotStateListBtnNotFinishedPlaying.type = 'button';
                                 gameSlotStateListBtnNotFinishedPlaying.className = 'hiddenbutton';
-                                gameSlotStateListBtnNotFinishedPlaying.addEventListener('click', () => changeGameState(gameData));
+                                gameSlotStateListBtnNotFinishedPlaying.addEventListener('click', () => moveGameToFinishedPlaying(gameData));
 
                                 let gameSlotStateListImgFinishedPlaying = document.createElement('img');
                                 gameSlotStateListImgFinishedPlaying.src = ('Assets/FinishedPlayingIconTransparent.png');
@@ -225,7 +223,7 @@ function addgametoUI(gameData) {
                             let gameSlotStateListBtnDelete = document.createElement('input');
                             gameSlotStateListBtnDelete.type = 'button';
                             gameSlotStateListBtnDelete.className = 'hiddenbutton';
-                            gameSlotStateListBtnDelete.addEventListener('click', () => changeGameState(gameData));
+                            gameSlotStateListBtnDelete.addEventListener('click', () => deleteGame(gameData));
 
                             let gameSlotStateListImgDelete = document.createElement('img');
                             gameSlotStateListImgDelete.src = ('Assets/AddButtonTransparent.png');
@@ -302,18 +300,85 @@ function saveGameData(gameData) {
     localStorage.setItem('games', JSON.stringify(games));
 }
 
-function loadGames() {
-    
-    // loader gamedata fra localstorage
-    var games = JSON.parse(localStorage.getItem('games')) || [];
+function openGameStateMenu(buttonElement) {
+    let parentElement = buttonElement.parentElement.parentElement;
 
-    // adder hvert game
-    games.forEach(function(gameData) {
-        addgametoUI(gameData);
+    let gameStateListDiv = parentElement.querySelector('.gameStateListDiv');
+    if (gameStateListDiv) {
+        gameStateListDiv.classList.toggle('active');
+    }
+    let gameStateList = gameStateListDiv.querySelector('.gameStateList');
+    if (gameStateList) {
+        gameStateList.classList.toggle('active');
+    }  
+}
+
+function moveGameToPlaying(gameData) {
+    updateGameState(gameData, 'playing');
+}
+function moveGameToNotPlaying(gameData) {
+    updateGameState(gameData, 'notplaying');
+}
+function moveGameToFinishedPlaying(gameData) {
+    updateGameState(gameData, 'finishedplaying');
+}
+
+function updateGameState(gameData, newState) {
+    let games = JSON.parse(localStorage.getItem('games')) || [];
+
+    let gameIndex = games.findIndex(game => game.gameName === gameData.gameName && game.gameCompany === gameData.gameCompany);
+
+    if (gameIndex !== -1) {
+        games[gameIndex].gameState = newState;
+
+        localStorage.setItem('games', JSON.stringify(games));
+
+        updateGameUI(gameData, newState);
+    } else {
+        alert('gamenot found in storage')
+    }
+}
+
+function updateGameUI(gameData, newState) {
+    let gameNameElements = document.querySelectorAll('.gameName')
+
+    let gameSlot = null;
+    gameNameElements.forEach(gameNameElement => {
+        if (gameNameElement.textContent.trim() === gameData.gameName) {
+            gameSlot = gameNameElement.parentElement;
+        }
     });
+
+    if (gameSlot) {
+        gameSlot.remove();
+    }
+
+    gameData.gameState = newState;
+
+    addgametoUI(gameData)
 }
 
-function changeGameState(gameData) {
-    alert('gamestate wants to change')
-}
+function deleteGame(gameData) {
+    let games = JSON.parse(localStorage.getItem('games')) || [];
 
+    let gameIndex = games.findIndex(game => game.gameName === gameData.gameName && game.gameCompany === gameData.gameCompany);
+
+    if (gameIndex !== -1) {
+        games.splice(gameIndex, 1)
+
+        localStorage.setItem('games', JSON.stringify(games));
+    }
+
+    let gameNameElements = document.querySelectorAll('.gameName')
+
+    let gameSlot = null;
+    gameNameElements.forEach(gameNameElement => {
+        if (gameNameElement.textContent.trim() === gameData.gameName) {
+            gameSlot = gameNameElement.parentElement;
+        }
+    });
+
+    if (gameSlot) {
+        gameSlot.remove();
+    }
+}
