@@ -36,6 +36,19 @@ function addGameData() {
             gameCompany: gameCompany,
         };
 
+    let games = JSON.parse(localStorage.getItem('games')) || [];
+
+    let gameNameCheck = games.findIndex(game => game.gameName === gameData.gameName);
+    
+    if (gameNameCheck !== -1) {
+        alert('game already exists')
+        document.getElementById('nameInput').value = '';
+        return;
+    }
+    
+    localStorage.setItem('games', JSON.stringify(games));
+
+        
     addgametoUI(gameData);
 
     saveGameData(gameData);
@@ -52,6 +65,9 @@ function addGameData() {
 }
 
 function addgametoUI(gameData) {
+
+
+
 
 // base Slot
     var gameSlot = document.createElement('div');

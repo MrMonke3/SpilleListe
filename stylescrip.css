@@ -153,6 +153,23 @@ Navbar
     .addGameCompany > label {
         padding: 5px;
     }
+    .SteamCompanyNav, .XboxCompanyNav, .EpicCompanyNav {
+        padding: 10px;
+        margin: 0px;
+        height: 30px;
+        width: fit-content;
+        border-radius: 10px;
+    }
+
+    .SteamCompanyNav {
+        background-color: var(--steamBright);
+    }
+    .XboxCompanyNav {
+        background-color: var(--xboxBright);
+    }
+    .EpicCompanyNav {
+        background-color: var(--epicBright);
+    }
 
     .gameCompanyNav {
         filter: drop-shadow(5px 8px 5px rgb(18, 18, 18));
