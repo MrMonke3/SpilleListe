@@ -73,7 +73,7 @@ function addgametoUI(gameData) {
                 if (gameData.gameCompany == 'steam') {
                     gameSlotCompany.className = 'steamGameSlotCompany'
                     var gameSlotCompanyImg = document.createElement('img')
-                    gameSlotCompanyImg.src = 'Assets/SteamLogoRaw.webp'
+                    gameSlotCompanyImg.src = 'Assets/SteamLogoTransparent.png'
                     gameSlotCompanyImg.className = 'gameSlotCompanyImg'
 
                     // flytt til under var etter jeg har lagd img til alle slotsa
@@ -82,7 +82,7 @@ function addgametoUI(gameData) {
                 else if (gameData.gameCompany == 'xbox') {
                 gameSlotCompany.className = 'xboxGameSlotCompany'
                     var gameSlotCompanyImg = document.createElement('img')
-                        gameSlotCompanyImg.src = 'Assets/xboxlogoRaw.png'
+                        gameSlotCompanyImg.src = 'Assets/XboxLogoTransparent.png'
                         gameSlotCompanyImg.className = 'gameSlotCompanyImg'
 
                 }
@@ -90,7 +90,7 @@ function addgametoUI(gameData) {
                 else if (gameData.gameCompany == 'epic') {
                 gameSlotCompany.className = 'epicGameSlotCompany'
                     var gameSlotCompanyImg = document.createElement('img')
-                        gameSlotCompanyImg.src = 'Assets/EpicgamesRaw.jpg'
+                        gameSlotCompanyImg.src = 'Assets/EpicgamesLogoTransparent.png'
                         gameSlotCompanyImg.className = 'gameSlotCompanyImg'
 
                 } 
@@ -226,7 +226,7 @@ function addgametoUI(gameData) {
                             gameSlotStateListBtnDelete.addEventListener('click', () => deleteGame(gameData));
 
                             let gameSlotStateListImgDelete = document.createElement('img');
-                            gameSlotStateListImgDelete.src = ('Assets/AddButtonTransparent.png');
+                            gameSlotStateListImgDelete.src = ('Assets/DeleteIconTransparent.png');
                             gameSlotStateListImgDelete.width = '50'
 
 

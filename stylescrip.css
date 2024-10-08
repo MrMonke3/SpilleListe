@@ -151,7 +151,7 @@ Navbar
     }
 
     .addGameCompany > label {
-        padding: 3px;
+        padding: 5px;
     }
 
     .gameCompanyNav {
@@ -338,7 +338,7 @@ Gamebox
             border-radius: 20px 0px 0px 20px;
     }
             .gameSlotCompanyImg {
-                width: 60px;
+                width: 40px;
             }
         
 
