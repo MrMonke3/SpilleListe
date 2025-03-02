@@ -10,6 +10,8 @@
 </head>
 
 <body>
+    <input type="file" id="uploadDataFile" style="display: none;" accept=".json" />
+
     <div class="navbar">
         <div>
             <input type="text" class="addtext" id="nameInput" maxlength="26" placeholder="Spill Navn">
@@ -51,6 +53,18 @@
                 <input type="button" onclick="addGameData()">
                 <img src="Assets/AddButtonTransparent.png" class="addButtonImg">
             </label>
+        </div>
+
+        <div class="data">
+            <label class="databtn">
+                <input type="button" id="uploadData">
+                <img src="Assets/upload.png" class="saveloadimg">
+            </label>
+            <label class="databtn">
+                <input type="button" id="downloadData">
+                <img src="Assets/download.png" class="saveloadimg">
+            </label>
+
         </div>
 
     </div>

@@ -47,8 +47,8 @@ button + radiobtn styling
     cursor: pointer;
 }
 [type=button]:hover + img {
-    opacity: 70%;
-
+    opacity: 60%;
+    scale: 110%;
 }
 [type=button]:checked + img {
     outline: 2px solid white;
@@ -64,7 +64,7 @@ button + radiobtn styling
         cursor: pointer;
     }
     [type=radio]:hover + img {
-        opacity: 70%;
+        opacity: 60%;
         scale: 110%;
     }
     [type=radio]:checked + img {
@@ -214,7 +214,6 @@ Navbar
     .addbutton {
         color: rgb(255, 255, 255);
         padding: 0px 0px;
-        border-radius: 0% 0% 20px 0%;
         margin: 0%;
         width: 80px;
         box-sizing: border-box;
@@ -225,6 +224,35 @@ Navbar
             width: 100%;
         }
  
+    /*
+    Load and Save button
+    */
+    .data {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 10px;
+    }
+
+        .databtn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 35px;
+            width: 40px;
+            margin: 3px 0px;
+            border-radius: 20%;
+            background-color: var(--mainBright);
+        }
+
+            .saveloadimg {
+                width: 20px;
+                filter: invert(1);
+            }
+     
+
+
 
 /*
 Gamebox Parent
