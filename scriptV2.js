@@ -9,14 +9,27 @@ window.onload = function() {
 }
 
 function loadGames() {
-    
     // loader gamedata fra localstorage
     var games = JSON.parse(localStorage.getItem('games')) || [];
 
+    let uniqueGames = [];
+    let gameTracker = new Set();
+
     // adder hvert game
-    games.forEach(function(gameData) {
-        addgametoUI(gameData);
+    games.forEach(game =>  {
+        let uniqueKey = `${game.gameName}-${game.gameCompany}`;
+        if (!gameTracker.has(uniqueKey)) {
+            gameTracker.add(uniqueKey);
+            uniqueGames.push(game)
+        }
     });
+
+    uniqueGames.sort((a, b) => a.gameName.toLowerCase().localeCompare(b.gameName.toLowerCase()));
+
+    localStorage.setItem('games', JSON.stringify(uniqueGames))
+
+    uniqueGames.forEach(addgametoUI);
+
 }
 
 function downloadGameData() {
@@ -101,8 +114,6 @@ function addGameData() {
     localStorage.setItem('games', JSON.stringify(games));
 
     addgametoUI(gameData);
-    saveGameData(gameData);
-
     document.getElementById('nameInput').value = '';
     } else {
         alert('skriv navn idiot');
@@ -324,14 +335,15 @@ function addgametoUI(gameData) {
 
 
 function saveGameData(gameData) {
-    var games = [];
+    let games = JSON.parse(localStorage.getItem('games')) || [];
 
-    // loader data, kommenter ut for å slette alle spill 
-    games = JSON.parse(localStorage.getItem('games')) || [];
+    let gameExists = games.some(game => game.gameName === gameData.gameName && game.gameCompany === gameData.gameCompany);
+    
+    if (!gameExists) {
+        games.push(gameData);
+        localStorage.setItem('games', JSON.stringify(games));
+    }
 
-    games.push(gameData);
-
-    localStorage.setItem('games', JSON.stringify(games));
 }
 
 function openGameStateMenu(buttonElement) {
